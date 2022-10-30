@@ -1,7 +1,8 @@
+
 const ticTacToe = {
 
-    board: ['', '', '', '', '', '', '', '', ''],
-    simbols: ['X', 'O'],
+    board: ['X','0','','','','','','',''],
+    simbols: ['X','O'],
     containerElement: null,
 
     init: function(container) {
@@ -15,10 +16,9 @@ const ticTacToe = {
 
         for (i in this.board) {
            
-            content += '<div>' + i + '</div>';
+            content += '<div>' + this.board[i] + '</div>';
         }
 
         this.containerElement.innerHTML = content;
-
     }
 };
