@@ -19,5 +19,6 @@ const ticTacToe = {
         }
 
         this.containerElement.innerHTML = content;
+
     },
 };
