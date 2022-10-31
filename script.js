@@ -44,6 +44,7 @@ const ticTacToe = {
         if (winningSequencesIndex >= 0 || !this.isGameOver()) {
 
             this.gameIsOver();
+            this.stylizeWinnerSequence(this.winningSequences[winningSequencesIndex]);
 
         } else {
 
