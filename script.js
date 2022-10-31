@@ -100,13 +100,8 @@ const ticTacToe = {
 
     draw() {
 
-        let content = '';
-
-        for (i in this.board) {
-           
-            content += `<div onclick="ticTacToe.makePlay(${i})">${this.board[i]}</div>`;
-        }
-
-        this.containerElement.innerHTML = content;
+        this.containerElement.innerHTML = this.board.map((element, index) =>
+            `<div onclick="ticTacToe.makePlay('${index}')"> ${element} </div>`)
+            .reduce((content, current) => content + current);
     }
-};
+}
