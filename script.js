@@ -54,6 +54,14 @@ const ticTacToe = {
         return true;
     },
 
+    stylizeWinnerSequence(winnerSequence) {
+
+        winnerSequence.forEach((position) => {
+
+            this.containerElement.querySelector(`div:nth-child(${position + 1})`).classList.add('winner');
+        });
+    },
+
     gameIsOver() {
 
         this.gameover = true;
