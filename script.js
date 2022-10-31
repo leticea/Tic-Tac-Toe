@@ -2,7 +2,7 @@
 const ticTacToe = {
 
     board: ['','','','','','','','',''],
-    simbols: { 
+    symbols: { 
         options: ['X','O'],
         turnIndex: 0, //quem é o jogador da vez
         change() {
@@ -30,29 +30,27 @@ const ticTacToe = {
 
     makePlay(position) {
 
-        if (this.gameover) return false;
-        if (this.board[position] === '') {
-
-            this.board[position] = this.simbols.options [this.simbols.turnIndex]; //insere no board e associa o simbolo ao jogador da vez
-            
-            this.draw();
-            let winningSequencesIndex = this.checkWinningSequences(this.simbols.options[this.simbols.turnIndex]);
-
-            if (winningSequencesIndex >= 0 || !this.isGameOver()) {
-
-                this.gameIsOver();
-
-            } else {
-
-                this.simbols.change();
-            }
-
-            return true;
-
-        } else {
+        if (this.gameover || this.board[position] !== '') {
 
             return false;
         }
+        
+        const currentSymbol = this.symbols.options [this.symbols.turnIndex]; //insere no board e associa o simbolo ao jogador da vez;
+        this.board[position] = currentSymbol;            
+        this.draw();
+
+        const winningSequencesIndex = this.checkWinningSequences(currentSymbol);
+
+        if (winningSequencesIndex >= 0 || !this.isGameOver()) {
+
+            this.gameIsOver();
+
+        } else {
+
+            this.symbols.change();
+        }
+
+        return true;
     },
 
     gameIsOver() {
@@ -62,6 +60,7 @@ const ticTacToe = {
     },
 
     isGameOver() {
+
         return this.board.includes('');
     },
 
@@ -74,21 +73,24 @@ const ticTacToe = {
 
     restart() {
         if (this.isGameOver() || this.gameover) {
+
             this.start();
-            console.log('this game has been restarted!')
+            console.log('This game has been restarted!')
+
         } else if (confirm('Are you sure you want to restart this game?')) {
+
             this.start();
-            console.log('this game has been restarted!')
+            console.log('This game has been restarted!')
         }
     },
 
-    checkWinningSequences(simbol) {
+    checkWinningSequences(symbol) {
 
         for (i in this.winningSequences) {
 
-            if (this.board[this.winningSequences[i][0]] == simbol &&
-                this.board[this.winningSequences[i][1]] == simbol &&
-                this.board[this.winningSequences[i][2]] == simbol) {
+            if (this.board[this.winningSequences[i][0]] == symbol &&
+                this.board[this.winningSequences[i][1]] == symbol &&
+                this.board[this.winningSequences[i][2]] == symbol) {
 
                     console.log('Sequencia vencedora: ' + i);
                     return i;
