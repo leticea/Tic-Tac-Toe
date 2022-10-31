@@ -38,7 +38,7 @@ const ticTacToe = {
             this.draw();
             let winningSequencesIndex = this.checkWinningSequences(this.simbols.options[this.simbols.turnIndex]);
 
-            if (winningSequencesIndex >= 0 || !this.board.includes('')) {
+            if (winningSequencesIndex >= 0 || !this.isGameOver()) {
 
                 this.gameIsOver();
 
@@ -62,7 +62,7 @@ const ticTacToe = {
     },
 
     isGameOver() {
-        return !this.board.includes('');
+        return this.board.includes('');
     },
 
     start: function() {
