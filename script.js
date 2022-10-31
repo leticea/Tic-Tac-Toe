@@ -5,7 +5,7 @@ const ticTacToe = {
     simbols: { 
         options: ['X','O'],
         turnIndex: 0, //quem é o jogador da vez
-        change: function() {
+        change() {
 
             this.turnIndex = (this.turnIndex === 0 ? 1 : 0); //faz a troca do jogador
         }
@@ -23,12 +23,12 @@ const ticTacToe = {
         [2,4,6]
     ],
 
-    init: function(container) {
+    init(container) {
 
         this.containerElement = container;
     },
 
-    makePlay: function(position) {
+    makePlay(position) {
 
         if (this.gameover) return false;
         if (this.board[position] === '') {
@@ -55,7 +55,7 @@ const ticTacToe = {
         }
     },
 
-    gameIsOver: function() {
+    gameIsOver() {
 
         this.gameover = true;
         console.log("GAME OVER");
@@ -65,7 +65,7 @@ const ticTacToe = {
         return this.board.includes('');
     },
 
-    start: function() {
+    start() {
 
         this.board.fill('');
         this.draw();
@@ -82,7 +82,7 @@ const ticTacToe = {
         }
     },
 
-    checkWinningSequences: function(simbol) {
+    checkWinningSequences(simbol) {
 
         for (i in this.winningSequences) {
 
@@ -98,7 +98,7 @@ const ticTacToe = {
         return -1;
     },
 
-    draw: function() {
+    draw() {
 
         let content = '';
 
