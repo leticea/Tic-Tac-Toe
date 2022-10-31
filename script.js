@@ -104,7 +104,7 @@ const ticTacToe = {
 
         for (i in this.board) {
            
-            content += '<div onclick="ticTacToe.makePlay(' + i +')">' + this.board[i] + '</div>';
+            content += `<div onclick="ticTacToe.makePlay(${i})">${this.board[i]}</div>`;
         }
 
         this.containerElement.innerHTML = content;
